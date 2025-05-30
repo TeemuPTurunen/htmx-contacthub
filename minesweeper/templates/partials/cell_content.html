@@ -1,0 +1,5 @@
+{% if cellstate == 'FLAGGED_EMPTY' or cellstate == 'FLAGGED_MINE' %}<span id="cell-{{ x }}-{{ y }}" hx-post="/minesweeper/cell-action/"hx-trigger="mousedown{% if 'flagged' in cell.state|lower %}[event.button === 2]{% endif %}"sse-swap="cell-{{ x }}-{{ y }}"hx-vals='js:{x: {{ x }}, y: {{ y }}, button: event.button}'hx-swap="outerHTML" class="cell flagged">🚩</span>
+{% elif cellstate == 'EXPLODED_MINE' %}<span class="cell open">💣</span>
+{% elif cellstate == 'OPEN_EMPTY' %}<span class="cell open"></span>
+{% else %}<span id="cell-{{ x }}-{{ y }}"     hx-post="/minesweeper/cell-action/"hx-trigger="mousedown{% if 'flagged' in cell.state|lower %}[event.button === 2]{% endif %}"sse-swap="cell-{{ x }}-{{ y }}"hx-vals='js:{x: {{ x }}, y: {{ y }}, button: event.button}'hx-swap="outerHTML" class="cell cell-hidden"></span>
+{% endif %}

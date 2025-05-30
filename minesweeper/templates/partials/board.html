@@ -1,0 +1,19 @@
+<style>
+  #minesweeper-container {
+    display: grid;
+    grid-template-columns: repeat({{ board_y }}, minmax(0, 1fr));
+    gap: 0.25rem;
+  }
+</style>
+
+<div 
+    id="minesweeper-container" 
+    oncontextmenu="return false" 
+    class="grid grid-cols-{{board_y}} gap-1 w-max mx-auto mb-10"
+>
+  {% for row in board %}
+    {% for cell in row %}
+      {% include 'partials/cell.html' with cell=cell x=forloop.counter0 y=forloop.parentloop.counter0 %}
+    {% endfor %}
+  {% endfor %}
+</div>

@@ -1,0 +1,51 @@
+<div>
+    {% include 'partials/cell_content.html' with cellstate=cell.state %}
+
+</div>
+
+{% comment %} TODO: MOVE HX STUFF INSIDE CELL CONTENT {% endcomment %}
+
+
+{% comment %} <div id="cell-{{ x }}-{{ y }}"
+     class="cell {{ cell.state|lower }}"
+     hx-post="/minesweeper/cell-action/"
+     hx-trigger="mousedown{% if 'flagged' in cell.state|lower %}[event.button === 2]{% endif %}"
+     sse-swap="cell-{{ x }}-{{ y }}"
+     hx-vals='js:{x: {{ x }}, y: {{ y }}, button: event.button}'
+     hx-swap="innerHTML"
+     {% if oob %}hx-swap-oob="true"{% endif %}
+>
+    {% if cell.state == 'FLAGGED_EMPTY' or cell.state == 'FLAGGED_MINE' %}
+        <span>🚩</span>
+    {% elif cell.state == 'EXPLODED_MINE' %}
+        <span>💣</span>
+    {% elif cell.state == 'OPEN_EMPTY' %}
+        <span></span>
+    {% else %}
+        <span></span>
+    {% endif %}
+</div> {% endcomment %}
+
+
+{% comment %} {% if cell.state == 'HIDDEN_EMPTY' or cell.state == 'HIDDEN_MINE' %}<div id="cell-{{ x }}-{{ y }}"
+     class="cell {{ cell.state|lower }}"
+     hx-post="/minesweeper/cell-action/"
+     hx-trigger="mousedown"
+     sse-swap="cell-{{ x }}-{{ y }}"
+     hx-vals='js:{x: {{ x }}, y: {{ y }}, button: event.button}'
+     hx-swap="outerHTML"
+     {% if oob %}hx-swap-oob="true"{% endif %}
+    >
+    </div>
+{% elif cell.state == 'FLAGGED_EMPTY' or cell.state == 'FLAGGED_MINE' %}
+    <div id="cell-{{ x }}-{{ y }}"
+     class="cell {{ cell.state|lower }}"
+     hx-post="/minesweeper/cell-action/"
+     hx-trigger="mousedown[event.button === 2]"
+     hx-vals='js:{x: {{ x }}, y: {{ y }}, button: event.button}'
+     hx-swap="outerHTML"
+     {% if oob %}hx-swap-oob="true"{% endif %}
+    >🚩
+    </div>
+{% elif cell.state == 'OPEN_EMPTY' %}<div id="cell-{{ x }}-{{ y }}" class="cell {{ cell.state|lower }}" {% if oob %}hx-swap-oob="true"{% endif %}></div>
+{% elif cell.state == 'EXPLODED_MINE' %}<div id="cell-{{ x }}-{{ y }}" class="cell {{ cell.state|lower }}" {% if oob %}hx-swap-oob="true"{% endif %}>💣</div>{% endif %} {% endcomment %}

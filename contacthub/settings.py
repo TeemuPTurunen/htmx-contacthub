@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,6 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'contacts',
+    'storages',
+    'minesweeper',
 ]
 
 MIDDLEWARE = [
@@ -113,3 +117,19 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'contacts.User'
 LOGIN_URL = '/admin/'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "contacts.azure_blob.storage_service.AzureMediaStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "contacts.azure_blob.storage_service.AzureMediaStorage",
+    },
+}
+
+
+AZURE_STORAGE_ACCOUNT = config("AZURE_STORAGE_ACCOUNT")
+AZURE_CONTAINER_NAME = config("AZURE_CONTAINER_NAME")
+AZURE_CLIENT_ID = config("AZURE_CLIENT_ID")
+AZURE_CLIENT_SECRET = config("AZURE_CLIENT_SECRET")
+AZURE_TENANT_ID = config("AZURE_TENANT_ID")
