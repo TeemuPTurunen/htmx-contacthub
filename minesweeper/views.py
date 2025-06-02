@@ -126,6 +126,7 @@ def open_cell(request):
 #     # return HttpResponse(clicked_cell_html + oob_cells)
 
 def cell_action(request):
+    time.sleep(0.1)  # Simulate some processing delay
     x = int(request.POST["x"])
     y = int(request.POST["y"])
     button = request.POST["button"]
