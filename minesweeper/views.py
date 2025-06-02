@@ -1,5 +1,6 @@
 import random
 
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -213,6 +214,12 @@ def stream(request):
                 clients.remove(q)
 
     return StreamingHttpResponse(event_stream(), content_type="text/event-stream")
+
+@csrf_exempt
+def update_cursor(request):
+    data = request.get_json()
+    print( {"x": data["x"], "y": data["y"]})
+
 
 # def stream(request):
 #     # time.sleep(55555)

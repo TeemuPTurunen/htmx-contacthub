@@ -24,6 +24,13 @@ To practice event-based architecture and state management in a web app.
 
 Because Minesweeper is fun and a great test case for grid-based logic.
 
+This project is a test of realtime multiuser server side rendered web-application with a large "fine-grain" UI.
+For the topic of this project the game "minesweeper" was chosen, due to it's familiarity to people, while also providing some complexity and scale beyond a basic CRUD-application.
+
+This project had 2 main goals:
+1. Test HTMX and HATEOS for "small-grain" applications to see how it performs and conveniency of development
+2. Apply a broad range of different technologies in one application. While also testing how they will impact the performance of the application.
+
 ⚙️ How It Works
 
 The game board is stored in server-side memory (board variable).

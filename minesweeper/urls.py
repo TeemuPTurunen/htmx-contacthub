@@ -8,5 +8,6 @@ urlpatterns = [
     path('reset/', views.reset, name='reset'),
     path('cell-action/', views.cell_action, name='cell_action'),
     path('stream/', views.stream, name='stream'),
+    path('update-cursor/', views.update_cursor, name='update_cursor'),
     
 ]

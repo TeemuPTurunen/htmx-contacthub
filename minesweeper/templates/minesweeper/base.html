@@ -137,6 +137,21 @@ document.body.addEventListener('htmx:afterSwap', (event) => {
   });
 });
 
+
+let lastSent = 0;
+document.addEventListener("mousemove", (e) => {
+  const now = Date.now();
+  if (now - lastSent > 100) {
+    lastSent = now;
+    fetch("/minesweeper/update-cursor/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ x: e.clientX, y: e.clientY }),
+    });
+  }
+});
+
+
     </script>
   </body>
 
